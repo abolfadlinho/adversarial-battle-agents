@@ -1,0 +1,23 @@
+# Maven
+target/
+!.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.properties
+
+# Eclipse / IntelliJ / VS Code
+.classpath
+.project
+.settings/
+.idea/
+*.iml
+.vscode/
+
+# Logs and OS files
+*.log
+.DS_Store
+Thumbs.db
+
+# Java
+*.class
+
+# Testing
+surefire-reports/
