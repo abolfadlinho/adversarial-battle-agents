@@ -187,6 +187,10 @@ public class battleTestsPublic {
 
     @Test
     public void test_minimax_i() {
+        // actual public tests has a timeout of 100 seconds
+        // however this doesn't always pass on my machine
+        // TA said they would run the tests at CPU of 2.4GHz
+        // my machine is 1.8GHz so I increased the timeout to 130 seconds when testing locally
         Assertions.assertTimeoutPreemptively(Duration.ofSeconds(100), () -> {
             String initialState = "1,10,5,2,3,5;6,7,3,1,13,4;A;";
             BattleSolver b = new BattleSolver();
