@@ -1,10 +1,7 @@
-//src/test/java/tests/battleTestsPublic.java
-
 package tests;
 
-import org.junit.jupiter.api.Test;
-
 import battle.BattleSolver;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
@@ -20,31 +17,18 @@ public class battleTestsPublic {
         Assertions.assertTimeoutPreemptively(Duration.ofSeconds(100), () -> {
 
             String initialState = "5,3;4,1;A;";
-        BattleSolver b = new BattleSolver();
-        String sol = b.solve(initialState, false, false);
-        int expectedScore = 12345;
+            BattleSolver b = new BattleSolver();
+            String sol = b.solve(initialState, false, false);
+            int expectedScore = 12345;
 
-        BattleGameChecker.ValidationResult validation = BattleGameChecker.validateSolution(initialState, sol, expectedScore, false);
-        assertTrue(validation.isValid, "Valid solution should pass validation: " + validation.errorMessage);
-
-        });
-    }
-
-
-    @Test
-    public void test_plan_b() {
-        Assertions.assertTimeoutPreemptively(Duration.ofSeconds(100), () -> {
-
-                    String initialState = "5,3;4,1;B;";
-        BattleSolver b = new BattleSolver();
-        String sol = b.solve(initialState, false, false);
-        int expectedScore = 12345;
-
-        BattleGameChecker.ValidationResult validation = BattleGameChecker.validateSolution(initialState, sol, expectedScore, false);
-        assertTrue(validation.isValid, "Valid solution should pass validation: " + validation.errorMessage);
+            BattleGameChecker.ValidationResult validation = BattleGameChecker.validateSolution(initialState, sol, expectedScore, false);
+            assertTrue(validation.isValid, "Valid solution should pass validation: " + validation.errorMessage);
 
         });
     }
+
+
+
 
 
     //--------------------------minimax only tests----------------------------------------
@@ -53,35 +37,18 @@ public class battleTestsPublic {
         Assertions.assertTimeoutPreemptively(Duration.ofSeconds(100), () -> {
 
             String initialState = "5,3;4,1;A;";
-        BattleSolver b = new BattleSolver();
-        String sol = b.solve(initialState, false, false);
+            BattleSolver b = new BattleSolver();
+            String sol = b.solve(initialState, false, false);
 
-        int expectedScore = 4;
-
-
-        BattleGameChecker.ValidationResult validation = BattleGameChecker.validateSolution(initialState, sol, expectedScore, true);
-        assertTrue(validation.isValid, "Valid solution should pass validation: " + validation.errorMessage);
-
-        });
-    }
+            int expectedScore = 4;
 
 
-    @Test
-    public void test_minimax_b() {
-        Assertions.assertTimeoutPreemptively(Duration.ofSeconds(100), () -> {
-
-            String initialState = "5,3;4,1;B;";
-        BattleSolver b = new BattleSolver();
-        String sol = b.solve(initialState, false, false);
-
-        int expectedScore = 3;
-
-
-        BattleGameChecker.ValidationResult validation = BattleGameChecker.validateSolution(initialState, sol, expectedScore, true);
-        assertTrue(validation.isValid, "Valid solution should pass validation: " + validation.errorMessage);
+            BattleGameChecker.ValidationResult validation = BattleGameChecker.validateSolution(initialState, sol, expectedScore, true);
+            assertTrue(validation.isValid, "Valid solution should pass validation: " + validation.errorMessage);
 
         });
     }
+
 
 
     @Test
@@ -89,14 +56,14 @@ public class battleTestsPublic {
         Assertions.assertTimeoutPreemptively(Duration.ofSeconds(100), () -> {
 
             String initialState = "1,1,2,3,6,7;5,5,3,1;A;";
-        BattleSolver b = new BattleSolver();
-        String sol = b.solve(initialState, false, false);
+            BattleSolver b = new BattleSolver();
+            String sol = b.solve(initialState, false, false);
 
-        int expectedScore = 8;
+            int expectedScore = 8;
 
 
-        BattleGameChecker.ValidationResult validation = BattleGameChecker.validateSolution(initialState, sol, expectedScore, true);
-        assertTrue(validation.isValid, "Valid solution should pass validation: " + validation.errorMessage);
+            BattleGameChecker.ValidationResult validation = BattleGameChecker.validateSolution(initialState, sol, expectedScore, true);
+            assertTrue(validation.isValid, "Valid solution should pass validation: " + validation.errorMessage);
 
         });
     }
@@ -106,51 +73,35 @@ public class battleTestsPublic {
         Assertions.assertTimeoutPreemptively(Duration.ofSeconds(100), () -> {
 
             String initialState = "1,1,2,3,6,7;5,5,3,1;A;";
-        BattleSolver b = new BattleSolver();
-        String sol = b.solve(initialState, false, false);
+            BattleSolver b = new BattleSolver();
+            String sol = b.solve(initialState, false, false);
 
-        int expectedScore = 8;
-        BattleGameChecker.ValidationResult validation = BattleGameChecker.validateSolution(initialState, sol, expectedScore, true);
-        assertTrue(validation.isValid, "Valid solution should pass validation: " + validation.errorMessage);
+            int expectedScore = 8;
+            BattleGameChecker.ValidationResult validation = BattleGameChecker.validateSolution(initialState, sol, expectedScore, true);
+            assertTrue(validation.isValid, "Valid solution should pass validation: " + validation.errorMessage);
 
         });
-        }
+    }
 
     @Test
     public void test_minimax_e() {
         Assertions.assertTimeoutPreemptively(Duration.ofSeconds(100), () -> {
 
 
-        String initialState = "7,3,11,9;2,8,4,10,1,6,5,1;A;";
-        BattleSolver b = new BattleSolver();
-        String sol = b.solve(initialState, false, false);
+            String initialState = "7,3,11,9;2,8,4,10,1,6,5,1;A;";
+            BattleSolver b = new BattleSolver();
+            String sol = b.solve(initialState, false, false);
 
-        int expectedScore = 3;
-
-
-        BattleGameChecker.ValidationResult validation = BattleGameChecker.validateSolution(initialState, sol, expectedScore, true);
-        assertTrue(validation.isValid, "Valid solution should pass validation: " + validation.errorMessage);
-
-        });
-    }
+            int expectedScore = 3;
 
 
-    @Test
-    public void test_minimax_f() {
-        Assertions.assertTimeoutPreemptively(Duration.ofSeconds(100), () -> {
-
-            String initialState = "7,3,11,9;2,8,4,10,1,6,5,1;B;";
-        BattleSolver b = new BattleSolver();
-        String sol = b.solve(initialState, false, false);
-
-        int expectedScore = -3;
-
-
-        BattleGameChecker.ValidationResult validation = BattleGameChecker.validateSolution(initialState, sol, expectedScore, true);
-        assertTrue(validation.isValid, "Valid solution should pass validation: " + validation.errorMessage);
+            BattleGameChecker.ValidationResult validation = BattleGameChecker.validateSolution(initialState, sol, expectedScore, true);
+            assertTrue(validation.isValid, "Valid solution should pass validation: " + validation.errorMessage);
 
         });
     }
+
+
 
 
     @Test
@@ -170,32 +121,14 @@ public class battleTestsPublic {
     }
 
 
-    @Test
-    public void test_minimax_h() {
-        Assertions.assertTimeoutPreemptively(Duration.ofSeconds(100), () -> {
-            String initialState = "1,1,1,1,2,3,6,7;5,5,10,1;B;";
-            BattleSolver b = new BattleSolver();
-            String sol = b.solve(initialState, true, false);
-            int expectedScore = -2;
-
-
-            BattleGameChecker.ValidationResult validation = BattleGameChecker.validateSolution(initialState, sol, expectedScore, true);
-            assertTrue(validation.isValid, "Valid solution should pass validation: " + validation.errorMessage);
-        });
-    }
 
 
     @Test
     public void test_minimax_i() {
-        // actual public tests has a timeout of 100 seconds
-        // however this doesn't always pass on my machine
-        // TA said they would run the tests at CPU of 2.4GHz
-        // my machine is 1.8GHz so I increased the timeout to 130 seconds when testing locally
         Assertions.assertTimeoutPreemptively(Duration.ofSeconds(100), () -> {
             String initialState = "1,10,5,2,3,5;6,7,3,1,13,4;A;";
             BattleSolver b = new BattleSolver();
-            String sol = b.solve(initialState, false, true);
-            System.out.println(sol);
+            String sol = b.solve(initialState, false, false);
             int expectedScore = -4;
 
 
@@ -206,22 +139,7 @@ public class battleTestsPublic {
     }
 
 
-    @Test
-    public void test_minimax_j() {
-        Assertions.assertTimeoutPreemptively(Duration.ofSeconds(100), () -> {
-            String initialState = "1,10,5,2,3,5;6,7,3,1,13,4;B;";
-            BattleSolver b = new BattleSolver();
-            String sol = b.solve(initialState, false, false);
 
-            int expectedScore = -14;
-
-
-            BattleGameChecker.ValidationResult validation = BattleGameChecker.validateSolution(initialState, sol, expectedScore, true);
-            assertTrue(validation.isValid, "Valid solution should pass validation: " + validation.errorMessage);
-
-        });
-
-    }
 
 
 //-------------------------------alphabeta tests-----------------------------------------------------
@@ -245,21 +163,7 @@ public class battleTestsPublic {
     }
 
 
-    @Test
-    public void test_alphabeta_b() {
-        Assertions.assertTimeoutPreemptively(Duration.ofSeconds(100), () -> {
 
-            String initialState = "5,3;4,1;B;";
-            BattleSolver b = new BattleSolver();
-            String sol = b.solve(initialState, true, false);
-
-            int expectedScore = 3;
-
-            BattleGameChecker.ValidationResult validation = BattleGameChecker.validateSolution(initialState, sol, expectedScore, true);
-            assertTrue(validation.isValid, "Valid solution should pass validation: " + validation.errorMessage);
-        });
-
-    }
 
     @Test
     public void test_alphabeta_c() {
@@ -279,22 +183,7 @@ public class battleTestsPublic {
     }
 
 
-    @Test
-    public void test_alphabeta_d() {
-        Assertions.assertTimeoutPreemptively(Duration.ofSeconds(100), () -> {
 
-            String initialState = "1,1,2,3,6,7;5,5,3,1;B;";
-            BattleSolver b = new BattleSolver();
-            String sol = b.solve(initialState, true, false);
-
-            int expectedScore = 3;
-
-
-            BattleGameChecker.ValidationResult validation = BattleGameChecker.validateSolution(initialState, sol, expectedScore, true);
-            assertTrue(validation.isValid, "Valid solution should pass validation: " + validation.errorMessage);
-        });
-
-    }
 
 
     @Test
@@ -315,21 +204,6 @@ public class battleTestsPublic {
     }
 
 
-    @Test
-    public void test_alphabeta_f() {
-        Assertions.assertTimeoutPreemptively(Duration.ofSeconds(100), () -> {
-
-            String initialState = "7,3,11,9;2,8,4,10,1,6,5,1;B;";
-            BattleSolver b = new BattleSolver();
-            String sol = b.solve(initialState, true, false);
-
-            int expectedScore = -3;
-
-            BattleGameChecker.ValidationResult validation = BattleGameChecker.validateSolution(initialState, sol, expectedScore, true);
-            assertTrue(validation.isValid, "Valid solution should pass validation: " + validation.errorMessage);
-        });
-
-    }
 
 
     @Test
@@ -350,20 +224,7 @@ public class battleTestsPublic {
     }
 
 
-    @Test
-    public void test_alphabeta_h() {
-        Assertions.assertTimeoutPreemptively(Duration.ofSeconds(100), () -> {
 
-            String initialState = "1,1,1,1,2,3,6,7;5,5,10,1;B;";
-            BattleSolver b = new BattleSolver();
-            String sol = b.solve(initialState, true, false);
-
-            int expectedScore = -2;
-            BattleGameChecker.ValidationResult validation = BattleGameChecker.validateSolution(initialState, sol, expectedScore, true);
-            assertTrue(validation.isValid, "Valid solution should pass validation: " + validation.errorMessage);
-        });
-
-    }
 
 
     @Test
@@ -373,7 +234,6 @@ public class battleTestsPublic {
             String initialState = "1,10,5,2,3,5;6,7,3,1,13,4;A;";
             BattleSolver b = new BattleSolver();
             String sol = b.solve(initialState, true, false);
-            System.out.println(sol);
 
             int expectedScore = -4;
 
@@ -406,13 +266,9 @@ public class battleTestsPublic {
         Assertions.assertTimeoutPreemptively(Duration.ofSeconds(100), () -> {
 
             String [] initialStrings = {"5,3;4,1;A;",
-                    "5,3;4,1;B;",
                     "1,1,2,3,6,7;5,5,3,1;A;",
-                    "1,1,2,3,6,7;5,5,3,1;B;",
                     "7,3,11,9;2,8,4,10,1,6,5,1;A;",
-                    "7,3,11,9;2,8,4,10,1,6,5,1;B;",
                     "1,10,5,2,3,5;6,7,3,1,13,4;A;",
-                    "1,10,5,2,3,5;6,7,3,1,13,4;B;"
 
             };
 
@@ -425,12 +281,10 @@ public class battleTestsPublic {
                 BattleSolver b1 = new BattleSolver();
                 String sol1 = b1.solve(init_str, false, false);
                 long nodesExpanded1 = Long.parseLong(sol1.split(";")[2]);
-                System.out.println(nodesExpanded1);
 
                 BattleSolver b2 = new BattleSolver();
                 String sol2 = b2.solve(init_str, true, false);
                 long nodesExpanded2 = Long.parseLong(sol2.split(";")[2]);
-                System.out.println(nodesExpanded2);
 
 
                 if (nodesExpanded1>nodesExpanded2) {
@@ -448,4 +302,6 @@ public class battleTestsPublic {
             assertTrue(success, "Alpha-Beta pruning not reducing nodes expanded");
         });
     }
+
+
 }

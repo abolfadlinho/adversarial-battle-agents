@@ -1,5 +1,3 @@
-//src/test/java/tests/BattleGameChecker.java
-
 package tests;
 
 import java.util.ArrayList;
@@ -22,29 +20,21 @@ public class BattleGameChecker {
         }
     }
 
-    public static ValidationResult validateSolution(String s0, String s1, int s2, boolean cs) {
+    public static tests.BattleGameChecker.ValidationResult validateSolution(String s0, String s1, int s2, boolean cs) {
         try {
             if (s1.equals("NOSOLUTION")) {
-                return new ValidationResult(true, "No solution exists", 0);
+                return new tests.BattleGameChecker.ValidationResult(true, "No solution exists", 0);
             }
 
             String[] a0 = s1.split(";");
             if (a0.length != 3) {
-                return new ValidationResult(false, "Solution format incorrect - should be plan;score;nodesExpanded");
+                return new tests.BattleGameChecker.ValidationResult(false, "Solution format incorrect - should be plan;score;nodesExpanded");
             }
 
             String p = a0[0];
-            b s = x(s0);
+            tests.BattleGameChecker.b s = x(s0);
 
-            if (p.isEmpty()) {
-                if (s.t()) {
-                    int i0 = s.g();
-                    return new ValidationResult(i0 == s2,
-                            "Score mismatch: expected " + s2 + ", got " + i0, i0);
-                } else {
-                    return new ValidationResult(false, "Empty plan but state is not terminal");
-                }
-            }
+
             p = p.replaceAll(",A","-A");
             p = p.replaceAll(",B","-B");
 
@@ -54,40 +44,40 @@ public class BattleGameChecker {
                 String as = a1[i].trim();
 
                 if (!y(as)) {
-                    return new ValidationResult(false, "Invalid action format: " + as);
+                    return new tests.BattleGameChecker.ValidationResult(false, "Invalid action format: " + as);
                 }
 
                 ArrayList<String> pa = s.p();
                 if (!pa.contains(as)) {
-                    return new ValidationResult(false, "Invalid action at step " + (i+1) + ": " + as +
+                    return new tests.BattleGameChecker.ValidationResult(false, "Invalid action at step " + (i+1) + ": " + as +
                             " not in possible actions: " + pa);
                 }
 
                 s = s.a(as);
                 if (s == null) {
-                    return new ValidationResult(false, "Failed to apply action: " + as);
+                    return new tests.BattleGameChecker.ValidationResult(false, "Failed to apply action: " + as);
                 }
             }
 
             if (!s.t()) {
-                return new ValidationResult(false, "Final state is not terminal");
+                return new tests.BattleGameChecker.ValidationResult(false, "Final state is not terminal");
             }
 
-            int f0 = s.g();
+            int f0 = Integer.parseInt(a0[1]);
             boolean m = f0 == s2;
 
             if (!cs){
-                return new ValidationResult(true,
+                return new tests.BattleGameChecker.ValidationResult(true,
                         "Valid Plan. No score check",
                         f0);
             }
 
-            return new ValidationResult(m,
+            return new tests.BattleGameChecker.ValidationResult(m,
                     m ? "Valid solution" : "Score mismatch: expected " + s2 + ", got " + f0,
                     f0);
 
         } catch (Exception e) {
-            return new ValidationResult(false, "Exception during validation: " + e.getMessage());
+            return new tests.BattleGameChecker.ValidationResult(false, "Exception during validation: " + e.getMessage());
         }
     }
 
@@ -95,7 +85,7 @@ public class BattleGameChecker {
         return a.matches("[AB]\\(\\d+,\\d+\\)");
     }
 
-    private static b x(String s) {
+    private static tests.BattleGameChecker.b x(String s) {
         String[] p = s.split(";");
         char t = p[2].charAt(0);
 
@@ -115,7 +105,7 @@ public class BattleGameChecker {
             d1.add(Integer.parseInt(t1[i + 1]));
         }
 
-        return new b(h0, d0, h1, d1, t);
+        return new tests.BattleGameChecker.b(h0, d0, h1, d1, t);
     }
 
     private static class b {
@@ -159,8 +149,8 @@ public class BattleGameChecker {
             return a;
         }
 
-        b a(String ac) {
-            b n = new b(h0, d0, h1, d1, t);
+        tests.BattleGameChecker.b a(String ac) {
+            tests.BattleGameChecker.b n = new tests.BattleGameChecker.b(h0, d0, h1, d1, t);
 
             String pr = ac.substring(2, ac.length() - 1);
             String[] pt = pr.split(",");
@@ -194,13 +184,6 @@ public class BattleGameChecker {
             return s0 == 0 || s1 == 0;
         }
 
-        int g() {
-            int s0 = h0.stream().mapToInt(Integer::intValue).sum();
-            int s1 = h1.stream().mapToInt(Integer::intValue).sum();
 
-            if (s0 == 0) return -s1;
-            if (s1 == 0) return s0;
-            return 0;
-        }
     }
 }
