@@ -334,4 +334,11 @@ public class BattleSolver {
             this.terminalNode = terminalNode;
         }
     }
+
+    public static void main(String[] args) {
+        BattleSolver solver = new BattleSolver();
+        String initialState = "5,3;4,1;B;";
+        String solution = solver.solve(initialState, true, true);
+        System.out.println("Solution: " + solution);
+    }
 }

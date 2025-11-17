@@ -1,0 +1,7 @@
+Team 64
+
+Ahmed Amr 55-1221 T8
+Adam Adham 55-3076 T13
+Mohamed Shaker 55-0903 T10
+
+https://github.com/abolfadlinho/adversarial-battle-agents
